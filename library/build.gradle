@@ -21,12 +21,11 @@ def developerFullName = "Your Full Name"
 group = projectGroup
 version = "1.0"
 
-def sdkVersion = 26;
-def toolsVersion = "26.0.1";
+def sdkVersion = 27
 
 android {
     compileSdkVersion sdkVersion
-    buildToolsVersion toolsVersion
+
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion sdkVersion
@@ -46,12 +45,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:2.+"
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:2.+"
 }
 
 // add the following information to the file: local.properties situated in the parent directory of
