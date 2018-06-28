@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'kotlin-android'
 
 def gitHubUsername = "yourusername"
 def gitHubProjectName = "yourprojectname"
@@ -51,6 +52,9 @@ dependencies {
     })
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:2.+"
+
+    // Kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 // add the following information to the file: local.properties situated in the parent directory of
@@ -121,6 +125,8 @@ task sourcesJar(type: Jar) {
 }
 
 task javadoc(type: Javadoc) {
+    excludes = ['**/*.kt'] // < ---- Exclude all kotlin files from javadoc file.
+
     title = "$projectName $project.version API"
     description "Generates Javadoc"
     source = android.sourceSets.main.java.srcDirs
