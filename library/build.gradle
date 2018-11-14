@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'kotlin-android'
 
 def gitHubUsername = "yourusername"
@@ -20,26 +21,25 @@ def projectLicenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
 def projectKeywords = ['your', 'library', 'keywords']
 def developerFullName = "Your Full Name"
 group = projectGroup
-version = "1.0"
-
-def sdkVersion = 27
 
 android {
-    compileSdkVersion sdkVersion
+    compileSdkVersion target_sdk
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion sdkVersion
-        versionCode 1
-        versionName version
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion min_sdk
+        targetSdkVersion target_sdk
+        versionCode version_code
+        versionName library_version
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     lintOptions {
         warning 'InvalidPackage'
     }
@@ -47,11 +47,24 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+
+    // Testing - https://developer.android.com/training/testing/set-up-project
     testImplementation 'junit:junit:4.12'
-    testImplementation "org.mockito:mockito-core:2.+"
+
+    // Core library
+    androidTestImplementation 'androidx.test:core:1.0.0'
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test:rules:1.1.0'
+
+    // Assertions
+    androidTestImplementation 'androidx.test.ext:junit:1.0.0'
+    androidTestImplementation 'androidx.test.ext:truth:1.0.0'
+    androidTestImplementation 'com.google.truth:truth:0.42'
+
+    // Espresso dependencies
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
     // Kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

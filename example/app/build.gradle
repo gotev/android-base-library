@@ -2,21 +2,18 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-def targetSdk = 27
-def supportTestVersion = "0.5"
-def espressoVersion = "2.2.2"
-
 android {
-    compileSdkVersion targetSdk
+    compileSdkVersion target_sdk
 
     defaultConfig {
         applicationId "net.gotev.baselibrarydemo"
-        minSdkVersion 16
-        targetSdkVersion targetSdk
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion min_sdk
+        targetSdkVersion target_sdk
+        versionCode version_code
+        versionName library_version
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,18 +25,27 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Testing
+    // Testing - https://developer.android.com/training/testing/set-up-project
     testImplementation 'junit:junit:4.12'
-    testImplementation "org.mockito:mockito-core:2.+"
-    androidTestImplementation "com.android.support:support-annotations:${supportLibVersion}"
-    androidTestImplementation "com.android.support.test:runner:${supportTestVersion}"
-    androidTestImplementation "com.android.support.test:rules:${supportTestVersion}"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:${espressoVersion}"
-    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:${espressoVersion}"
+
+    // Core library
+    androidTestImplementation 'androidx.test:core:1.0.0'
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test:rules:1.1.0'
+
+    // Assertions
+    androidTestImplementation 'androidx.test.ext:junit:1.0.0'
+    androidTestImplementation 'androidx.test.ext:truth:1.0.0'
+    androidTestImplementation 'com.google.truth:truth:0.42'
+
+    // Espresso dependencies
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
     // Support
-    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
-    implementation "com.android.support:design:$supportLibVersion"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
 
     implementation project(':library')
 }
