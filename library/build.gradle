@@ -4,23 +4,15 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'kotlin-android'
 
-def gitHubUsername = "yourusername"
-def gitHubProjectName = "yourprojectname"
-
 // start - do not modify this if your project is on github
-def siteUrl = "https://github.com/${gitHubUsername}/${gitHubProjectName}"
+def siteUrl = "https://github.com/${github_username}/${github_repository_name}"
 def gitUrl = siteUrl + '.git'
 def bugTrackerUrl = siteUrl + '/issues/'
-def projectName = gitHubProjectName
+def projectName = github_repository_name
 // end - do not modify this if your project is on github
 
-def projectDesc = "Your library brief description"
-def projectGroup = "com.yourcompany"
-def projectLicenses = ["Apache-2.0"]
-def projectLicenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-def projectKeywords = ['your', 'library', 'keywords']
-def developerFullName = "Your Full Name"
-group = projectGroup
+group = library_project_group
+version = library_version
 
 android {
     compileSdkVersion target_sdk
@@ -40,35 +32,39 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     lintOptions {
         warning 'InvalidPackage'
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     // Testing - https://developer.android.com/training/testing/set-up-project
-    testImplementation 'junit:junit:4.12'
+    testImplementation "junit:junit:$junit_version"
 
     // Core library
-    androidTestImplementation 'androidx.test:core:1.0.0'
+    androidTestImplementation "androidx.test:core:$androidx_test_core_version"
 
     // AndroidJUnitRunner and JUnit Rules
-    androidTestImplementation 'androidx.test:runner:1.1.0'
-    androidTestImplementation 'androidx.test:rules:1.1.0'
+    androidTestImplementation "androidx.test:runner:$androidx_test_runner_version"
+    androidTestImplementation "androidx.test:rules:$androidx_test_rules_version"
 
     // Assertions
-    androidTestImplementation 'androidx.test.ext:junit:1.0.0'
-    androidTestImplementation 'androidx.test.ext:truth:1.0.0'
-    androidTestImplementation 'com.google.truth:truth:0.42'
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test_ext_junit_version"
+    androidTestImplementation "androidx.test.ext:truth:$androidx_test_ext_truth_version"
+    androidTestImplementation "com.google.truth:truth:$truth_version"
 
     // Espresso dependencies
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso_version"
 
     // Kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
 
 // add the following information to the file: local.properties situated in the parent directory of
 // where this file is:
@@ -87,21 +83,21 @@ install {
     repositories.mavenInstaller {
         pom.project {
             name projectName
-            description projectDesc
+            description library_description
             packaging 'aar'
-            groupId projectGroup
+            groupId library_project_group
             version version
             url siteUrl
             licenses {
                 license {
-                    name projectLicenses[0]
-                    url projectLicenseUrl
+                    name library_licenses[0]
+                    url library_licenses_url
                 }
             }
             developers {
                 developer {
                     id properties.getProperty("bintray.user")
-                    name developerFullName
+                    name maintainer
                 }
             }
             scm {
@@ -121,12 +117,12 @@ bintray {
     pkg {
         repo = "maven"
         name = projectName
-        desc = projectDesc
+        desc = library_description
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         issueTrackerUrl = bugTrackerUrl
-        licenses = projectLicenses
-        labels = projectKeywords
+        licenses = library_licenses
+        labels = library_keywords
         publicDownloadNumbers = true
         publish = true
     }
@@ -153,6 +149,7 @@ task javadoc(type: Javadoc) {
         links("http://docs.oracle.com/javase/7/docs/api/");
         linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference");
         setMemberLevel(JavadocMemberLevel.PUBLIC)
+        addStringOption('Xdoclint:none', '-quiet')
     }
 }
 
@@ -165,4 +162,3 @@ artifacts {
     archives javadocJar
     archives sourcesJar
 }
-
