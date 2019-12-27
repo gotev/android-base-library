@@ -1,17 +1,17 @@
 ext {
     mavRepoInternalUrl = System.getenv('LOCAL_MAVEN_URL')
 
-    github_username = 'gotev'
+    github_username = 'GITHUB_USER'
     github_repository_name = 'GITHUB_REPOSITORY_NAME'
 
-    maintainer = 'Aleksandar Gotev'
+    maintainer = 'MAINTAINER_FULL_NAME'
 
     bintray_project_name = 'GITHUB_REPOSITORY_NAME'
-    library_description = 'your library brief description'
+    library_description = 'LIBRARY_DESCRIPTION'
     library_keywords = ['your', 'library', 'keywords']
     library_licenses = ["Apache-2.0"]
     library_licenses_url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
-    library_project_group = 'net.gotev'
+    library_project_group = 'LIBRARY_PROJECT_GROUP'
     library_version = '1.0.0'
     version_code = 1
     min_sdk = 21
