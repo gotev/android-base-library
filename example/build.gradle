@@ -8,6 +8,9 @@ buildscript {
         jcenter()
         mavenCentral()
         google()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
 
     dependencies {
@@ -15,9 +18,9 @@ buildscript {
 
         //classpath dependencies to import library project
         classpath "com.github.ben-manes:gradle-versions-plugin:$gradle_versions_plugin_version"
-        classpath "com.github.dcendents:android-maven-gradle-plugin:$maven_gradle_version"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintray_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$kotlin_lint_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
