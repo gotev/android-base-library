@@ -25,7 +25,7 @@ read demoapp_package_name
 
 function rename {
     echo "renaming $1 to $2"
-    grep -rl "$1" . --exclude-dir=.gradle --exclude-dir=build --exclude-dir=.git | grep -v "./rename" | xargs sed -i "s/$1/$2/g"
+    grep -rl "$1" . --exclude-dir=.gradle --exclude-dir=build --exclude-dir=.git | grep -v "./rename" | xargs sed -i '' -e "s/$1/$2/g"
 }
 
 rename "GITHUB_USER" "${github_user}"
@@ -47,6 +47,7 @@ function move_package {
     rm -rf "$ROOT_DIR"
 }
 
+cd "$CURDIR"
 cd library/src/main/java/
 move_package "net/gotev/baselibrary" "$LIB_PACKAGE_DIRECTORIES"
 
@@ -58,6 +59,7 @@ cd "$CURDIR"
 cd library/src/androidTest/java/
 move_package "net/gotev/baselibrary" "$LIB_PACKAGE_DIRECTORIES"
 
+cd "$CURDIR"
 mv -v library "${lib_name}"
 rename ":library" ":${lib_name}"
 
