@@ -23,6 +23,9 @@ read lib_project_group
 echo "Demo App package (e.g. net.gotev.baselibrarydemo):"
 read demoapp_package_name
 
+echo "Demo App Label (e.g. Base Library Demo)"
+read demoapp_label
+
 function rename {
     echo "renaming $1 to $2"
     grep -rl "$1" . --exclude-dir=.gradle --exclude-dir=build --exclude-dir=.git | grep -v "./rename" | xargs sed -i '' -e "s/$1/$2/g"
@@ -35,6 +38,7 @@ rename "LIBRARY_DESCRIPTION" "${lib_description}"
 rename "net.gotev.baselibrary" "${lib_package_name}"
 rename "LIBRARY_PROJECT_GROUP" "${lib_project_group}"
 rename "net.gotev.baselibrarydemo" "${demoapp_package_name}"
+rename "Base Library Demo" "${demoapp_label}"
 
 LIB_PACKAGE_DIRECTORIES="${lib_package_name//\.//}"
 DEMOAPP_PACKAGE_DIRECTORIES="${demoapp_package_name//\.//}"
@@ -60,9 +64,12 @@ cd library/src/androidTest/java/
 move_package "net/gotev/baselibrary" "$LIB_PACKAGE_DIRECTORIES"
 
 cd "$CURDIR"
-mv -v library "${lib_name}"
+mkdir "${lib_name}"
+mv -v library/* "${lib_name}"
+rm -rf library
+
 rename ":library" ":${lib_name}"
-rename "../library" "../${lib_name}"
+rename "\.\.\/library" "\.\.\/${lib_name}"
 
 cd "$CURDIR"
 cd example/app/src/main/java/
