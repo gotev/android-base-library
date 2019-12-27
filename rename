@@ -62,6 +62,7 @@ move_package "net/gotev/baselibrary" "$LIB_PACKAGE_DIRECTORIES"
 cd "$CURDIR"
 mv -v library "${lib_name}"
 rename ":library" ":${lib_name}"
+rename "../library" "../${lib_name}"
 
 cd "$CURDIR"
 cd example/app/src/main/java/
