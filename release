@@ -1,2 +1,2 @@
 #!/bin/bash
-./gradlew :library:clean :library:bintrayUpload
+./gradlew clean test publish bintrayUpload
