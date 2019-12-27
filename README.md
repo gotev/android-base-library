@@ -15,6 +15,6 @@ After you've cloned your forked repo, you need to perform these actions:
 
 And you're ready to go!
 
-To publish your library on bintray, simply execute: `./gradlew clean assembleRelease bintrayUpload`
+To publish your library on bintray, simply execute: `./release`
 
 From bintray.com, you can then link your library on jCenter and push it also to Maven Central, but I'm not going to cover that here, as there are plenty of examples on the Internet on how to do that
