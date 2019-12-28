@@ -1,29 +1,29 @@
 #!/bin/bash
-echo "GitHub username:"
+echo -e "\nGitHub username:"
 read github_user
 
-echo "GitHub repository name:"
+echo -e "\nGitHub repository name:"
 read github_repo
 
-echo "Maintainer full name:"
+echo -e "\nMaintainer full name:"
 read maintainer
 
-echo "Library name (without spaces. E.g. base-library):"
+echo -e "\nLibrary name (without spaces. E.g. base-library). This is also the Maven Artifact ID:"
 read lib_name
 
-echo "Library description:"
+echo -e "\nLibrary description:"
 read lib_description
 
-echo "Library package (e.g. net.gotev.baselibrary):"
+echo -e "\nLibrary package (e.g. net.gotev.baselibrary):"
 read lib_package_name
 
-echo "Library project group (e.g. net.gotev):"
+echo -e "\nLibrary project group (e.g. net.gotev):"
 read lib_project_group
 
-echo "Demo App package (e.g. net.gotev.baselibrarydemo):"
+echo -e "\nDemo App package (e.g. net.gotev.baselibrarydemo):"
 read demoapp_package_name
 
-echo "Demo App Label (e.g. Base Library Demo)"
+echo -e "\nDemo App Label (e.g. Base Library Demo)"
 read demoapp_label
 
 function rename {
