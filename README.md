@@ -1,4 +1,4 @@
-# Android Base Library
+# Android Base Library Template
 Template project to create an Android library, which is ready to be published locally and on Bintray.
 
 ## What's in this project template

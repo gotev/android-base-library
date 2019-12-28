@@ -33,6 +33,7 @@ function rename {
 
 rename "GITHUB_USER" "${github_user}"
 rename "GITHUB_REPOSITORY_NAME" "${github_repo}"
+rename "Android Base Library Template" "${github_repo}"
 rename "MAINTAINER_FULL_NAME" "${maintainer}"
 rename "LIBRARY_NAME" "${lib_name}"
 rename "LIBRARY_DESCRIPTION" "${lib_description}"
