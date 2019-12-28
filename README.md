@@ -1,7 +1,7 @@
 # Android Base Library
 Template project to create an Android library, which is ready to be published locally and on Bintray.
 
-# What's in this project template
+## What's in this project template
 - Kotlin 1.3.60
 - KtLint
 - Android Testing setup for both unit and integration tests
@@ -9,7 +9,7 @@ Template project to create an Android library, which is ready to be published lo
 - Example app project which imports the library project
 - `manifest.gradle` which contains library metadata information and common dependencies between library project and demo app project.
 
-# Getting started
+## Getting started
 * Fork this project
 * Clone it locally
 * Get you Bintray API key and username. If you don't have it, register on [bintray.com](https://bintray.com). It's free.
@@ -21,7 +21,7 @@ Template project to create an Android library, which is ready to be published lo
 * Run `./rename` and enter the required information
 * Done! Open `example/app/build.gradle` from your Android Studio and start writing your next awesome library!
 
-# Release
+## Release
 You can release the library:
 - **locally**: `./release local`. This is going to create a `releases` directory which can be used as a Maven Repository.
 - **publicly on Bintray**: `./release`
