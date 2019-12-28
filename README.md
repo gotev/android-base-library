@@ -1,5 +1,5 @@
 # Android Base Library
-Starting empty project to create an android library, which is ready to be published on bintray and maven central
+Starting empty project to create an android library, which is ready to be published on bintray and maven central.
 
 Just fork this project, then clone it on your computer and open it in Android Studio!
 
@@ -8,10 +8,12 @@ After you've cloned your forked repo, you need to perform these actions:
 
 * Register on [bintray.com](https://bintray.com). It's free.
 * Get you bintray API key and username
-* Inside your `local.properties` file put `bintray.apikey=YOUR_API_KEY` and `bintray.user=YOUR_BINTRAY_USERNAME`
-* Modify the [following lines](https://github.com/gotev/android-base-library/blob/master/library/build.gradle#L5-L22) in library/build.gradle file accordingly to your library
-* Create a new package `com.yourcompany.yourlibrary` under the java sources
-* Remove example `net.gotev.baselibrary` files and package
+* Inside your `local.properties` file put:
+  ```
+  bintray.apikey=YOUR_API_KEY
+  bintray.user=YOUR_BINTRAY_USERNAME
+  ```
+* Run `./rename` and enter the required information
 
 And you're ready to go!
 
