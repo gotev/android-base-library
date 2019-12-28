@@ -49,8 +49,6 @@ CURDIR=$(pwd)
 function move_package {
     mkdir -p "$2"
     mv -v "${1}/"* "${2}/"
-    ROOT_DIR=$(echo "$1" | tr "/" "\n" | head -n 1)
-    rm -rf "$ROOT_DIR"
 }
 
 cd "$CURDIR"
@@ -84,3 +82,7 @@ move_package "net/gotev/baselibrarydemo" "$DEMOAPP_PACKAGE_DIRECTORIES"
 cd "$CURDIR"
 cd example/app/src/androidTest/java/
 move_package "net/gotev/baselibrarydemo" "$DEMOAPP_PACKAGE_DIRECTORIES"
+
+cd "$CURDIR"
+find . -type d -empty -delete
+

@@ -19,7 +19,7 @@ Template project to create an Android library, which is ready to be published lo
   bintray.user=YOUR_BINTRAY_USERNAME
   ```
 * Run `./rename` and enter the required information
-* Done! Open `example/app/build.gradle` from your Android Studio and start writing your next awesome library!
+* Done! Open `example/build.gradle` from your Android Studio and start writing your next awesome library!
 
 ## Release
 You can release the library:
