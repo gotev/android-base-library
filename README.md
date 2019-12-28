@@ -2,7 +2,7 @@
 Template project to create an Android library, which is ready to be published locally and on Bintray.
 
 ## What's in this project template
-- Kotlin 1.3.60
+- Kotlin 1.3.61
 - KtLint
 - Android Testing setup for both unit and integration tests
 - Library project
