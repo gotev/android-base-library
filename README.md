@@ -10,8 +10,8 @@ Template project to create an Android library, which is ready to be published lo
 - `manifest.gradle` which contains library metadata information and common dependencies between library project and demo app project.
 
 ## Getting started
-* Fork this project
-* Clone it locally  ```
+* Fork this project 
+* Clone it locally
 * Run `./rename` and enter the required information
 * Done! Open `example/build.gradle` from your Android Studio and start writing your next awesome library!
 
